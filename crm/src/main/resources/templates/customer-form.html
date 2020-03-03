@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <th:block th:include="bootstrap/css.html"/>
+        <title>Save Customer</title>
+    </head>
+    <body>
+
+        <th:block th:include="header/headerTitle.html"/>
+
+        <form action="saveCustomer" th:object="${customer}" method="post">
+            <input type="hidden" th:field="*{id}"/>
+
+            <table style="margin-left: 5rem"><br/><br/>
+                <tbody>
+                    <tr>
+                        <td><label>First name:</label></td>
+                        <td><input type="text" th:field="*{firstName}"/></td>
+                    </tr>
+                    <tr>
+                        <td><label>Last name:</label></td>
+                        <td><input type="text" th:field="*{lastName}"/></td>
+                    </tr>
+                    <tr>
+                        <td><label>Email:</label></td>
+                        <td><input type="text" th:field="*{email}"/></td>
+                    </tr>
+                    <tr>
+                        <td><label><br/><br/></label></td>
+                        <td><input type="submit" value="Save"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+        <br/><br/>
+        <a th:href="@{/customer/list}"><div style="margin-left: 2rem"><b>Back to List</b></div></a>
+
+        <th:block th:include="bootstrap/js.html"/>
+    </body>
+</html>

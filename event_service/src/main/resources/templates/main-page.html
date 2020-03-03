@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <th:block th:include="bootstrap/css.html"/>
+        <title>E-A-S</title>
+    </head>
+    <body class="bg">
+
+
+        <th:block th:include="header/headerTitle.html"/>
+        <br/><br/>
+
+        <a sec:authorize="hasAnyRole('ORGANIZER','ADMIN')"href="/organizer/showFormForAdd">
+            <button type="button" class="btn btn-light btn-lg btn-block"
+                    style="max-width: 80rem; margin-left: 20rem"><h4>Add new event</h4></button>
+        </a>
+        </button>
+        <br/><br/>
+
+
+
+        <form action="/search" th:object="${search}" method="get">
+            <div style="max-width: 80rem; margin-left: 20rem">
+                <div class="form-group bg-dark text-white">
+                    <label>Search for an event:</label>
+                    <textarea class="form-control bg-dark text-white" rows="1" th:field="*{searchString}"></textarea>
+                    <button class="btn text-white btn-dark active" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+        <br/><br/>
+
+        <th:block th:each="tempEvent : ${events}">
+            <div class="card text-white bg-dark mb-3" style="max-width: 80rem; margin-left: 20rem" align="center">
+                <div class="card-header"><a th:href="@{/showDetails(eventId=${tempEvent.id})}"/>
+                    <b><h3><div th:text="${tempEvent.title}"/></h3></b>
+                </a></div>
+                <div class="card-body">
+                    <span class="card-title">►► Start: <span th:text="${tempEvent.startDate}"/> ■
+                                                End: <span th:text="${tempEvent.endDate}"/> ◄◄</span>
+                    <p class="card-text"><span th:text="${#strings.abbreviate(tempEvent.description,50)}"/>...</p>
+                </div>
+            </div>
+        </th:block>
+        <th:block th:include="bootstrap/js.html"/>
+    </body>
+</html>
