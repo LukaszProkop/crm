@@ -9,7 +9,7 @@
 
         <th:block th:include="header/headerTitle.html"/>
 
-        <form action="saveCustomer" th:object="${customer}" method="post">
+        <form th:action="@{/customer/saveCustomer}" th:object="${customer}" method="post">
             <input type="hidden" th:field="*{id}"/>
 
             <table style="margin-left: 5rem"><br/><br/>

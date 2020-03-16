@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Access Denied</title>
+        <th:block th:include="bootstrap/css.html"/>
+    </head>
+    <body>
+        <th:block th:include="header/headerTitle.html"/>
+        <br/><br/>
+        <h2 align="center">Access Denied - You are not authorized to access this resource.</h2>
+    </body>
+    <br/><br/>
+    <a th:href="@{/}" style="margin-left: 1rem"><b>Back to Home Page</b></a>
+    <th:block th:include="bootstrap/js.html"/>
+</html>

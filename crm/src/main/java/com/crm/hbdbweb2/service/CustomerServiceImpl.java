@@ -11,7 +11,6 @@ import java.util.List;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
-    // need to inject customer dao
     @Autowired
     private CustomerDAO customerDAO;
 

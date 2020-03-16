@@ -1,17 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html>
     <head>
-        <th:block th:include="bootstrap/css.html"/>
-        <title>Astro Guy</title>
+        <title>CRM</title>
+        <meta http-equiv = "refresh" content = "0; url = /customer/list" />
     </head>
-    <body>
-
-        <div class="card" style="width: 25rem;">
-            <img th:src="@{images/astronaut-guy.png}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <a th:href="@{customer/list}"><h1>Customer Relationship Manager</h1></a>
-            </div>
-        </div>
-        <th:block th:include="bootstrap/js.html"/>
-    </body>
 </html>

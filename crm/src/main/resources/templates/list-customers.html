@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head>
         <meta charset="UTF-8">
 
@@ -13,7 +14,7 @@
 
         <br/>
         <button style="margin-left: 5rem" type="button" class="btn btn-secondary btn-lg"
-                onclick="window.location.href='showFormForAdd'; return false;">Add Customer
+                onclick="window.location.href='showFormForAdd'; return false;" sec:authorize="hasAnyRole('MANAGER')">Add Customer
         </button>
         <br/><br/>
 
@@ -22,14 +23,14 @@
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email</th>
-                <th>Action</th>
+                <th sec:authorize="hasAnyRole('MANAGER')">Action</th>
             </tr>
             <!--                    loop over and print our customers-->
             <tr th:each="tempCustomer : ${customers}">
                 <td th:text="${tempCustomer.firstName}"></td>
                 <td th:text="${tempCustomer.lastName}"></td>
                 <td th:text="${tempCustomer.email}"></td>
-                <td>
+                <td sec:authorize="hasAnyRole('MANAGER')">
                     <a th:href="@{/customer/showFormForUpdate(customerId=${tempCustomer.id})}">Update</a>
                     |
                     <a th:href="@{/customer/delete(customerId=${tempCustomer.id})}"

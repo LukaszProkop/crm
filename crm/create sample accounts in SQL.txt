@@ -1,0 +1,18 @@
+-- create sample accounts in SQL:
+-- login/passwords/roles:
+-- user/user/EMPLOYEE
+-- lukasz/lukasz/EMPLOYEE, MENAGER
+-- admin/admin/EMPLOYEE, MENAGER, ADMIN
+
+insert into users values
+('admin', 1, '{bcrypt}$2a$04$QSwlvJf2RzGr.paIheTg4eHawtMzOMphDFES7vSf1/69uB5MpPh/C'),
+('lukasz', 1, '{bcrypt}$2a$04$svyvWGwOk9GX5MBd8Jia0.vrV5i8w2pfDrox4b2eGNhcx3iwrzah.'),
+('user', 1, '{bcrypt}$2a$04$lj1oI4pxMFk1Zfaa4LB8D.ExyLvi/AnMlfeSZrdK1WA0uDeqD43/G');
+
+insert into authorities values
+(1, 'ROLE_MANAGER', 'admin'),
+(2, 'ROLE_MANAGER', 'lukasz'),
+(3, 'ROLE_EMPLOYEE', 'admin'),
+(4, 'ROLE_EMPLOYEE', 'lukasz'),
+(5, 'ROLE_EMPLOYEE', 'user'),
+(6, 'ROLE_ADMIN', 'admin');
