@@ -1,6 +1,13 @@
 package com.crm.hbdbweb2.model;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+import org.hibernate.annotations.SQLUpdate;
+import org.hibernate.sql.Update;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,9 +24,9 @@ public class Users {
     @Column(name = "enabled", columnDefinition = "tinyint(1)")
     private int enabled;
 
-    @OneToMany(fetch = FetchType.EAGER,
-            cascade = {CascadeType.ALL})
-    @JoinColumn(name = "username")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "users",
+            cascade = CascadeType.ALL)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Authorities> roles;
 
     public String getUsername() {
@@ -52,5 +59,13 @@ public class Users {
 
     public void setRoles(List<Authorities> roles) {
         this.roles = roles;
+    }
+
+    public void addRole(String role) {
+        if(roles == null) {
+            roles = new ArrayList<>();
+        }
+
+        this.roles.add(new Authorities(role, this));
     }
 }

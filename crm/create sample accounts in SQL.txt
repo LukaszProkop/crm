@@ -16,3 +16,10 @@ insert into authorities values
 (4, 'ROLE_EMPLOYEE', 'lukasz'),
 (5, 'ROLE_EMPLOYEE', 'user'),
 (6, 'ROLE_ADMIN', 'admin');
+
+insert into customer values
+(1, 'lukasz.marek.prokop@gmail.com', 'Lukasz', 'Prokop'),
+(2, 'michal@gmail.com', 'Michal', 'King'),
+(3, 'adam@gmail.com', 'Adam', 'Kowalski'),
+(4, 'mateusz@gmail.com', 'Mateusz', 'Adams'),
+(5, 'wojtek@gmail.com', 'John', 'White');

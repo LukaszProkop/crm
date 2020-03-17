@@ -3,12 +3,15 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <form th:action="@{/logout}" method="post" style="margin-top: 1rem; margin-right: 1rem; margin-left: 1rem">
         <input type="submit" value="Logout" style="float: right">
+        <a th:href="@{/admin/adminPanel}"style="float: right" sec:authorize="hasAnyRole('ADMIN')">
+            <button type="button" style="float: right">Admin Panel</button>
+        </a>
         User: <th:block sec:authentication="principal.username"/>
         <br/>
         Role(s): <th:block sec:authentication="principal.authorities"/>
     </form>
 <div style="margin-left: 1rem; margin-right: 1rem; margin-top: 2px"
-     class="card bg-danger text-white text-center p-3">
+     class="card bg-danger text-white text-center p-3" onclick="window.location.href='/'">
     <blockquote class="blockquote mb-0">
         <h2>CRM - Customer Relationship Manager</h2>
     </blockquote>

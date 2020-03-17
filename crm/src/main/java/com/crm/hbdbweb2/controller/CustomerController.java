@@ -1,6 +1,7 @@
 package com.crm.hbdbweb2.controller;
 
 import com.crm.hbdbweb2.model.Customer;
+import com.crm.hbdbweb2.model.Users;
 import com.crm.hbdbweb2.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,7 +36,6 @@ public class CustomerController {
     @PostMapping("/saveCustomer")
     public String saveCustomer(@ModelAttribute("customer") Customer theCustomer) {
         customerService.saveCustomer(theCustomer);
-
         return "redirect:/customer/list";
     }
 
@@ -49,9 +49,7 @@ public class CustomerController {
 
     @GetMapping("/delete")
     public String deleteCustomer(@RequestParam("customerId") int theId) {
-        //delete the customer
         customerService.deleteCustomer(theId);
         return "redirect:/customer/list";
     }
-
 }

@@ -34,7 +34,7 @@ public class CrmSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/", "/customer/list").hasAnyRole("EMPLOYEE", "MANAGER", "ADMIN")
                 .antMatchers("/customer/**").hasAnyRole("MANAGER", "ADMIN")
-                .antMatchers("/customer/admin/**").hasAnyRole("ADMIN")
+                .antMatchers("/admin/**").hasAnyRole("ADMIN")
                 .and()
                 .formLogin().loginPage("/showMyLoginPage").loginProcessingUrl("/authenticateTheUser").permitAll()
                 .and()

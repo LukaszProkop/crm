@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <th:block th:include="bootstrap/css.html"/>
+    </head>
+    <body>
+        <th:block th:include="header/headerTitle.html"/>
+<br/>
+        <h3 style="margin-left: 5rem">--NEW USER FORM--</h3>
+        <form th:action="@{/admin/saveUser}" th:object="${user}" method="post">
+            <table style="margin-left: 5rem"><br/>
+                <tbody>
+                    <tr>
+                        <td><label><b>Username:</b></label></td>
+                        <td><input type="text" th:field="*{username}"/></td>
+                    </tr>
+                    <tr>
+                        <td><label><b>Password:</b></label></td>
+                        <td><input type="text" th:field="*{password}"/></td>
+                    </tr>
+                    <tr>
+                        <td><br/><br/>
+                            <h5><b>Select user's role:</b></h5>
+                            <input type="radio" th:field="*{role}" value="EMPLOYEE">
+                            <label>EMPLOYEE</label><br/>
+                            <input type="radio" th:field="*{role}" value="MENAGER">
+                            <label>MENAGER</label><br/>
+                            <input type="radio" th:field="*{role}" value="ADMIN">
+                            <label>ADMIN</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><br/><br/></label></td>
+                        <td><input type="submit" value="Save"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+        <br/><br/>
+        <a th:href="@{/admin/adminPanel}"><div style="margin-left: 2rem"><b>Back to admin panel</b></div></a>
+        <a th:href="@{/customer/list}"><div style="margin-left: 2rem"><b>Back to CRM List</b></div></a>
+
+        <th:block th:include="bootstrap/js.html"/>
+    </body>
+</html>

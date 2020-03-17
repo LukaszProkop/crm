@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <th:block th:include="bootstrap/css.html"/>
+    </head>
+    <body>
+        <th:block th:include="header/headerTitle.html"/>
+        <br/><br/>
+        <a th:href="@{/admin/addUser}"><button type="button" style="margin: auto; display: block">Add new user</button></a>
+        <br/>
+        <table  style="margin-right: auto; margin-left: auto; border: 1px solid black">
+            <thead align="center">
+            <tr style="border: 1px solid black" class="bg-dark text-white">
+                <th>UserName</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody align="center">
+            <tr style="border: 1px solid black" th:each="tempUser : ${usersList}">
+                <td th:text="${tempUser.username}"></td>
+                <td>
+                    <a th:href="@{/admin/userUpdate(username=${tempUser.username})}">Update</a>
+                    |
+                    <a th:href="@{/admin/deleteUser(username=${tempUser.username})}"
+                       onclick="if (!(confirm('Are you sure you want to delete this user?'))) return false">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br/><br/>
+        <a th:href="@{/customer/list}"><div style="margin-left: 2rem"><b>Back to CRM List</b></div></a>
+
+        <th:block th:include="bootstrap/js.html"/>
+    </body>
+</html>
