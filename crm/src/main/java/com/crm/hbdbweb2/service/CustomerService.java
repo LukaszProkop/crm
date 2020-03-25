@@ -3,7 +3,6 @@ package com.crm.hbdbweb2.service;
 import com.crm.hbdbweb2.dto.UsersDTO;
 import com.crm.hbdbweb2.model.Customer;
 import com.crm.hbdbweb2.model.Users;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 import java.util.List;
 
